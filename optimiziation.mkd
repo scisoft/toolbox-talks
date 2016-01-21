@@ -21,9 +21,41 @@ layout: false
 
 ---
 
+## Profiling
+
+<img src="img/profile.png" style="width: 200px;"/>
+
+- Where does the program spend most time?
+- Dynamic program analysis (runtime)
+- Statistical sampling or event-based
+- Profiling perturbs the calculation
+
+---
+
 ## Profile first, optimize later
 
 - write me
+
+---
+
+## Performance analysis
+
+- Programming
+
+- Compilation parameters
+    - "Right" compiler
+    - Compiler flags
+    - Instruction set
+    - Optimized libraries
+
+- Runtime parameters
+    - "Right" machine
+    - Memory
+    - I/O
+    - Parallelization
+    - Adapting parameters to system size
+
+- With relatively easy steps analyze whether application runs efficiently
 
 ---
 
@@ -102,7 +134,7 @@ layout: false
 
 ## Amdahl
 
-- write me
+<img src="img/amdahl.png" style="width: 700px;"/>
 
 ---
 
@@ -141,3 +173,31 @@ layout: false
 
 - natural process
 - needs tests
+
+---
+
+## Conclusions
+
+### Performance is typically not portable
+
+### Typical problems
+
+- Parallel region too small
+- Serialization of parallel tasks
+- I/O heavy code
+- Communication overhead
+- Work load imbalance
+- Resource imbalance
+- Memory-bound code
+- Sub-optimal use of libraries
+- System size too small
+- Wrong code
+
+---
+
+## Conclusions
+
+### Advice
+
+- Profile first, optimize later
+- Trust but verify
