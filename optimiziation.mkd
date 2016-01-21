@@ -1,0 +1,143 @@
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# Profiling and code optimization
+
+## Radovan Bast
+
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Code examples: [OSI](http://opensource.org)-approved [MIT license](http://opensource.org/licenses/mit-license.html).
+
+---
+
+layout: false
+
+## Priorities
+
+- write me
+
+---
+
+## Profile first, optimize later
+
+- write me
+
+---
+
+## Easy language first
+
+- write me
+
+---
+
+## Easy algorithm first
+
+- write me
+
+---
+
+## Scaling and bottlenecks
+
+- pre-factor
+- scaling
+- YAGNI
+
+---
+
+## Moving target
+
+- multi-processor
+- multi-thread
+
+---
+
+## Disk and memory access
+
+- caching
+- memoization
+- recompute
+- MPI and scaling (disk access serializing)
+
+---
+
+## Do not reinvent the wheel
+
+- libraries
+- libraries are dependencies
+
+---
+
+## Elemental functions
+
+- write me
+
+---
+
+## Pure functions
+
+- write me
+
+---
+
+## Intrinsics
+
+- write me
+
+---
+
+## Timers
+
+- write me
+
+---
+
+## Multiple loops
+
+- allocating/deallocating inside of multiple loops
+
+---
+
+## Amdahl
+
+- write me
+
+---
+
+## Matlab
+
+- write me
+
+---
+
+## Performance vs. obfuscation
+
+- complexity
+- intrinsics
+
+---
+
+## Human time vs. CPU time
+
+- write me
+
+---
+
+## Prefactor vs. scaling
+
+- write me
+
+---
+
+## Moore's law
+
+- write me
+
+---
+
+## Refactoring
+
+- natural process
+- needs tests
