@@ -86,11 +86,22 @@ layout: false
 
 ---
 
+## Maybe port
+
+- Restructure mathematical formulation
+- Innovate at algorithm level
+- Then maybe port
+
+---
+
 ## Disk and memory access
 
-- caching
-- memoization
-- recompute
+- Caching
+- Cache hierarchy
+- Distance to data
+- Gorilla
+- Memoization
+- Recompute
 - MPI and scaling (disk access serializing)
 
 ---
@@ -126,6 +137,12 @@ layout: false
 
 ---
 
+## Frequency race
+
+- "The party isn't exactly over, but the police has arrived, and the music has been turned way down" (P. Kogge)
+
+---
+
 ## Multiple loops
 
 - allocating/deallocating inside of multiple loops
@@ -134,7 +151,9 @@ layout: false
 
 ## Amdahl
 
-<img src="img/amdahl.png" style="width: 700px;"/>
+<img src="img/amdahl.png" style="width: 400px;"/>
+
+- Serial and parallel part scale differently w.r.t. system size
 
 ---
 
