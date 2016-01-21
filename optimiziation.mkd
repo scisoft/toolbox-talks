@@ -176,6 +176,45 @@ layout: false
 
 ---
 
+## Profilers
+
+## Event-based (tracing)
+
+- Collect data (traces) for pre-defined events (entering or leaving functions, object allocation, communication, disk I/O)
+- Modify the code
+- Often large overhead
+- Selective
+
+## Statistical (sampling)
+
+- Collect data at regular intervals
+- Typically small overhead
+- Not all code is seen
+- May differ between execution
+- Show bottlenecks in production code
+- Can be used for monitoring over long execution runs
+- Reports on external library functions
+
+---
+
+## Profilers
+
+- Gprof
+- Extrae/paraver
+- Papi
+- Tau
+- Scalasca
+- Vampir
+- Allinea Performance Reports
+- OProfile
+- HPC toolkit
+- Perf tools
+- VTune (Intel)
+- DynInst (dynamic injection of code)
+- MAP (Allinea)
+
+---
+
 ## Conclusions
 
 ### Performance is typically not portable
