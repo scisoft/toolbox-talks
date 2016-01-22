@@ -15,58 +15,77 @@ Code examples: [OSI](http://opensource.org)-approved [MIT license](http://openso
 
 layout: false
 
-## Testing
-
-- **Why (principles)**
-    - Motivation
-    - Unit tests
-    - Test-driven development
-    - Functionality regression tests
-    - Performance regression tests
-    - Total time to test matters
-    - Code coverage
-    - Continuous integration
-
-- **How (technology)**
-    - Unit test frameworks (py.test, nose, Google Test, pFUnit)
-    - CTest and CDash
-    - runtest
-    - Travis
-    - Coveralls
-
----
-
-## Unit tests
+## Test-driven development
 
 <img src="img/unit-testing.jpg" style="width: 350px;"/>
 
 - https://twitter.com/dave1010/status/613601365529657344
+- TDD: Testing is a central ingredient in programming (write test before you write code)
+- Unit tests: test one unit
 
 ---
 
-## Motivation (1/2)
+## Motivation 1: code quality
 
-- As projects grow, it becomes easier to break things
+- More robust code
+- As projects grow, it becomes easier to break things without noticing immediately
 - In particular for non-modular entangled projects (effects at distance)
 - Testing helps detecting errors early:
   programming without constantly testing your changes will introduce errors
   and it is extremely time consuming to detect and fix them
-- Interpreted imperative languages need to be tested
+- Interpreted dynamically typed imperative languages need to be tested
 - So do compiled languages but the compiler catches at least some errors
+- We publish scientific papers based on scientific code
 
 ---
 
-## Motivation (2/2)
+## Motivation 2: distributing code
 
-- Tests make it easier for new people to modify/reuse your code
-- If you do not have (good) tests:
-    - Newcomers will break the code
-    - Newcomers will be scared of modifying your code
-    - You get less contributors and contributions
-    - You will break the code
-    - You will at some point publish wrong numbers (no fun)
-- Tests make it easier for computing center personnel to check that the code
-  has been correctly installed
+- Users and computing center personnel may not be able to identify incorrect
+  installation without automated testing
+- Users of your code publish papers based on results produced by your code
+
+---
+
+## Motivation 3: developers
+
+- Satisfying instant visual feedback
+- Avoid coding constipation
+- Avoid "gold-plating" the code
+
+---
+
+## Motivation 4: external contributors
+
+- Easier for external developers to contribute to the project
+- Tests can be good documentation; up to date by definition
+
+---
+
+## Motivation 5: managing complexity
+
+- Help to modularize/encapsulate
+- Unit tests sharpen and document interfaces
+- Enable reuse and migration
+- Faster coding: allows to make big changes quickly; refactoring
+- You start with design; often leads to better design
+- Well structured code is easy to test
+
+---
+
+template: inverse
+
+## Imperfect tests run frequently are better than perfect tests which are never written
+
+---
+
+## Important
+
+- Test frequently (each commit)
+- Test automatically (Travis CI)
+- Test with numerical tolerance
+- Think about code coverage (https://coveralls.io)
+- Write test, red, green, refactor
 
 ---
 
@@ -89,8 +108,8 @@ layout: false
     - Write an empty function template
     - Test that the test fails
     - Program until the test passes
+    - Perhaps refactor
     - Move on
-- Avoids "gold-plating" the code
 
 ---
 
@@ -115,8 +134,19 @@ layout: false
 - Good idea
     - Create benchmark calculations to cover various performance-critical modules
     - Run these benchmarks regularly (weekly?)
-    - Monitor the timing (CDash records timing)
+    - Monitor the timing
     - If timing changes significantly, alarm bells should be ringing
+
+---
+
+## Code coverage
+
+- If I break the code and all tests pass who is to blame?
+- A code that is not tested will break sooner or later
+- Code coverage measures and documents which lines of code have been traversed during a test run
+- It is possible to have line-by-line coverage (example later)
+- In all the files that have zero coverage you can multiply all numbers with 10E5 and all tests
+  will happily pass
 
 ---
 
@@ -133,24 +163,11 @@ layout: false
 
 ---
 
-## Code coverage
-
-- If I break the code and all tests pass who is to blame?
-- A code that is not tested will break sooner or later
-- Code coverage measures and documents which lines of code have been traversed during a test run
-- It is possible to have line-by-line coverage (example later)
-- In all the files that have zero coverage you can multiply all numbers with 10E5 and all tests
-  will happily pass
-
----
-
 ## Continuous integration
 
-- Merge and test all developer working copies with a shared mainline several times a day
-- Possibly after each commit
-- Avoid "integration hell"
+- Test each commit on every branch
 - Makes it possible for the mainline maintainer to see whether a modification
-  breaks functionality before merging it manually
+  breaks functionality before accepting the merge
 
 ---
 
@@ -182,12 +199,14 @@ layout: false
     - py.test
     - nose
     - doctest
+    - unittest
 
 - C(++)
     - Google Test
     - CppUnit
     - Boost.Test
     - UnitTest++
+    - https://github.com/philsquared/Catch
 
 - Fortran
     - pFUnit
@@ -200,7 +219,7 @@ layout: false
 - Very easy to set up
 
 ```shell
-$ pip install pytest # ideally into a virtualenv
+$ pip install pytest  # ideally into a virtualenv
 ```
 
 - Very easy to use
@@ -289,57 +308,7 @@ enable_testing()
 $ make Nightly
 ```
 
-- CDash example: https://repo.theochem.kth.se/cdash/
-
----
-
-## runtest
-
-- Numerically tolerant test library
-- http://runtest.readthedocs.org
-- https://github.com/bast/runtest
-
-```python
-#!/usr/bin/env python
-
-import os
-import sys
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from runtest_dirac import Filter, TestRun
-
-test = TestRun(__file__, sys.argv)
-
-f = Filter()
-f.add(from_string   = '@   Elements of the electric dipole',
-      to_string     = '@   anisotropy',
-      rel_tolerance = 1.0e-5)
-f.add(from_string   = '************ Expectation values',
-      to_string     = 's0 = T : Expectation value',
-      rel_tolerance = 1.0e-5)
-
-test.run(['PBE0gracLB94.inp', 'GLLBsaopLBalpha.inp'], ['Ne.mol'], f)
-
-sys.exit(test.return_code)
-```
-
----
-
-## Travis CI
-
-- https://travis-ci.org
-- Free for public repositories
-- Easy integration with GitHub
-- Host entire build and test history
-- Example: https://travis-ci.org/bast/xcint/builds
-
-## Coveralls: code coverage history and stats
-
-- https://coveralls.io
-- Free for public repositories
-- Easy integration with GitHub
-- Host entire test coverage history
-- Example: https://coveralls.io/r/bast/pytest-demo?branch=master
+- CDash example: https://testboard.org
 
 ---
 
@@ -363,9 +332,16 @@ this by playing a pre-programmed control sequence to a USB Foam Missile Launcher
 
 ---
 
-## Summary
+# Travis and Coveralls
 
-- There are many tools out there
-- We have not covered all of them
-- Automated testing (in one form or another) is a must
-- Think about test coverage
+- GitHub plus Travis plus Coveralls is a killer combination - use it!
+- Free for public repositories
+
+### Travis CI
+
+- https://travis-ci.org
+
+### Coveralls: code coverage history and stats
+
+- https://coveralls.io
+
