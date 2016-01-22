@@ -17,7 +17,7 @@ layout: false
 
 ## Test-driven development
 
-<img src="img/unit-testing.jpg" style="width: 350px;"/>
+<img src="img/unit-testing.jpg" style="width: 450px;"/>
 
 - https://twitter.com/dave1010/status/613601365529657344
 - TDD: Testing is a central ingredient in programming (write test before you write code)
