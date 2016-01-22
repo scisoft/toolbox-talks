@@ -288,7 +288,7 @@ subroutine test_add_numbers()
 end subroutine
 ```
 
-- Example output: https://travis-ci.org/bast/pfunit-demo/builds/40946796
+- Example output: https://travis-ci.org/bast/pfunit-demo/builds/104193675
 - Example project: https://github.com/bast/pfunit-demo
 
 ---
