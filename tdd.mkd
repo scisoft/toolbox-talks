@@ -225,14 +225,19 @@ $ pip install pytest  # ideally into a virtualenv
 - Very easy to use
 
 ```python
-def add_numbers(f1, f2):
-    return f1 + f2
+def get_word_lengths(s):
+    """
+    Returns a list of integers representing
+    the word lengths in string s.
+    """
+    return [len(w) for w in s.split()]
 
-def test_add_numbers():
-    assert (add_numbers(1.0, 2.0) == 3.0)
+def test_get_word_lengths():
+    text = "Three tomatoes are walking down the street"
+    assert get_word_lengths(text) == [5, 8, 3, 7, 4, 3, 6]
 ```
 
-- Example output: https://travis-ci.org/bast/pytest-demo/builds/40930408
+- Example output: https://travis-ci.org/bast/pytest-demo/builds/104182942
 - Example project: https://github.com/bast/pytest-demo
 
 ---
