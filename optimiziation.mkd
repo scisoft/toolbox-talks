@@ -218,19 +218,25 @@ layout: false
 
 ## Profilers
 
-- Gprof
-- Extrae/paraver
-- Papi
-- Tau
-- Scalasca
-- Vampir
-- Allinea Performance Reports
-- OProfile
-- HPC toolkit
-- Perf tools
-- VTune (Intel)
-- DynInst (dynamic injection of code)
-- MAP (Allinea)
+- Free
+    - Gprof
+    - Callgrind (Valgrind)
+    - Python: cProfile, profile
+    - OProfile
+
+- HPC, free
+    - HPCToolkit
+    - DynInst
+    - Extrae/Paraver
+    - Scalasca
+    - TAU
+
+- Commercial
+    - Vampir
+    - Allinea Performance Reports
+    - Allinea MAP
+    - CrayPat
+    - VTune Amplifier (Intel)
 
 ---
 
