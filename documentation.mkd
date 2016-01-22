@@ -13,7 +13,7 @@ Code examples: [OSI](http://opensource.org)-approved [MIT license](http://openso
 
 ---
 
-# When you look at a code project for the first time, what are the things you look for?
+## When you look at a code project for the first time, what are the things you look for?
 
 ---
 
@@ -51,7 +51,7 @@ layout: false
 
 template: inverse
 
-# Why are so many websites so ugly?
+## Why are so many websites so ugly?
 
 ---
 
@@ -89,7 +89,7 @@ template: inverse
 
 template: inverse
 
-# Project documentation
+## Project documentation
 
 ---
 
