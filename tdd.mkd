@@ -246,7 +246,7 @@ def test_get_word_lengths():
 
 - Widely used
 - Very rich in functionality
-- Source: https://github.com/svn2github/googletest.git
+- Source: https://github.com/google/googletest
 
 ```cpp
 #include "gtest/gtest.h"
@@ -260,7 +260,7 @@ TEST(example, add)
 }
 ```
 
-- Example output: https://travis-ci.org/bast/gtest-demo/builds/41003659
+- Example output: https://travis-ci.org/bast/gtest-demo/builds/104190982
 - Example project: https://github.com/bast/gtest-demo
 
 ---
