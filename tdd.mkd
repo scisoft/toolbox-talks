@@ -332,7 +332,7 @@ this by playing a pre-programmed control sequence to a USB Foam Missile Launcher
 
 ---
 
-# Travis and Coveralls
+## Travis and Coveralls
 
 - GitHub plus Travis plus Coveralls is a killer combination - use it!
 - Free for public repositories
@@ -344,4 +344,3 @@ this by playing a pre-programmed control sequence to a USB Foam Missile Launcher
 ### Coveralls: code coverage history and stats
 
 - https://coveralls.io
-
