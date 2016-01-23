@@ -117,7 +117,7 @@ $ git status
 
 ## Conflict resolution
 
-- Let us inspect file ``lyrics``
+- Let us inspect file `lyrics`
 
 ```shell
 billy jean is not my lover
