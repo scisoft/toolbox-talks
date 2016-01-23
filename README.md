@@ -3,10 +3,10 @@
 
 # Toolbox course talks
 
-- [Introduction to version control and Git](http://cicero.xyz/v1/github/bast/toolbox-talks/master/git-intro.mkd/remark/)
-- [Modern code documentation](http://cicero.xyz/v1/github/bast/toolbox-talks/master/documentation.mkd/remark/)
-- [Profiling and code optimization](http://cicero.xyz/v1/github/bast/toolbox-talks/master/optimiziation.mkd/remark/)
-- [Test-driven development](http://cicero.xyz/v1/github/bast/toolbox-talks/master/tdd.mkd/remark/)
+- [Introduction to version control and Git](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-intro.mkd/remark/)
+- [Modern code documentation](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/documentation.mkd/remark/)
+- [Profiling and code optimization](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/optimiziation.mkd/remark/)
+- [Test-driven development](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/tdd.mkd/remark/)
 
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 Code examples: [OSI](http://opensource.org)-approved [MIT license](http://opensource.org/licenses/mit-license.html).
