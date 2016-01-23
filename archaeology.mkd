@@ -67,7 +67,7 @@ index cc52fe2..fa35eab 100644
 ## Finding out who introduced a modification and when
 
 - `git blame` is a fun and useful command to find out when a specific line got introduced and by whom
-- This is important to judge the impact of a bug (when was it introduced? for how long has this bug been around? has this bug been released?)
+- This is important to judge the impact of a bug (When was it introduced? For how long has this bug been around? Has this bug been released?)
 
 ```shell
 $ git blame <filename>
