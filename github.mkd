@@ -42,9 +42,11 @@ layout: false
 - The upstream repo and the fork are in principle independent repositories
 - We copy all commits, all branches
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-01.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-01.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-01.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-01.svg)
 
 ---
 
@@ -54,11 +56,14 @@ layout: false
 $ git clone https://github.com/user/foo.git
 ```
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-01.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-01.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-01.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-01.svg)
 
-**local repo** ![](img/git/github/github-local-01.svg)
+**local repo**
+![](img/git/github/github-local-01.svg)
 
 ---
 
@@ -66,11 +71,14 @@ $ git clone https://github.com/user/foo.git
 
 - We do some work and make a commit
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-01.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-01.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-01.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-01.svg)
 
-**local repo** ![](img/git/github/github-local-02.svg)
+**local repo**
+![](img/git/github/github-local-02.svg)
 
 ---
 
@@ -80,11 +88,14 @@ $ git clone https://github.com/user/foo.git
 $ git push origin master
 ```
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-01.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-01.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-02.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-02.svg)
 
-**local repo** ![](img/git/github/github-local-03.svg)
+**local repo**
+![](img/git/github/github-local-03.svg)
 
 ---
 
@@ -92,11 +103,14 @@ $ git push origin master
 
 - We can file a pull-request
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-01.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-01.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-02.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-02.svg)
 
-**local repo** ![](img/git/github/github-local-03.svg)
+**local repo**
+![](img/git/github/github-local-03.svg)
 
 ---
 
@@ -104,11 +118,14 @@ $ git push origin master
 
 - If the pull-request is accepted, the change is incorporated
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-02.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-02.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-02.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-02.svg)
 
-**local repo** ![](img/git/github/github-local-03.svg)
+**local repo**
+![](img/git/github/github-local-03.svg)
 
 ---
 
@@ -117,11 +134,14 @@ $ git push origin master
 - Upstream repo receives other changes (other merged pull-requests)
 - How do we get these changes to the forked repo?
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-03.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-03.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-02.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-02.svg)
 
-**local repo** ![](img/git/github/github-local-03.svg)
+**local repo**
+![](img/git/github/github-local-03.svg)
 
 ---
 
@@ -132,11 +152,14 @@ $ git remote add upstream https://github.com/foo/foo.git
 $ git fetch upstream
 ```
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-03.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-03.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-02.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-02.svg)
 
-**local repo** ![](img/git/github/github-local-04.svg)
+**local repo**
+![](img/git/github/github-local-04.svg)
 
 ---
 
@@ -147,11 +170,14 @@ $ git checkout master
 $ git merge upstream/master
 ```
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-03.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-03.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-02.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-02.svg)
 
-**local repo** ![](img/git/github/github-local-05.svg)
+**local repo**
+![](img/git/github/github-local-05.svg)
 
 ---
 
@@ -161,11 +187,14 @@ $ git merge upstream/master
 $ git push origin master
 ```
 
-**https://github.com/foo/foo.git** ![](img/git/github/github-remote-03.svg)
+**https://github.com/foo/foo.git**
+![](img/git/github/github-remote-03.svg)
 
-**https://github.com/user/foo.git** ![](img/git/github/github-remote-03.svg)
+**https://github.com/user/foo.git**
+![](img/git/github/github-remote-03.svg)
 
-**local repo** ![](img/git/github/github-local-06.svg)
+**local repo**
+![](img/git/github/github-local-06.svg)
 
 ---
 
