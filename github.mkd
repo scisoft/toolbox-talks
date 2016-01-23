@@ -198,6 +198,26 @@ $ git push origin master
 
 ---
 
+## Pro-tip
+
+- Different URLs for fetch and push
+
+```shell
+$ git remote add origin https://github.com/foo/foo.git
+$ git remote set-url --push origin https://github.com/user/foo.git
+```
+
+- Now we always fetch from the central repo and push to forked repo
+
+```shell
+$ git remote -v
+
+origin	https://github.com/foo/foo.git (fetch)
+origin	https://github.com/user/foo.git (push)
+```
+
+---
+
 ## Summary
 
 - Working with multiple remotes is not scary
