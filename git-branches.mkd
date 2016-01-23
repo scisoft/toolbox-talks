@@ -33,7 +33,7 @@ layout: false
 
 ## Branches
 
-![](img/git-collaborative-work.svg)
+![](img/git/branches/git-collaborative-work.svg)
 
 - It is a very good practice to use branches
 - **Develop independent features on separate branches**
@@ -44,7 +44,7 @@ layout: false
 
 ## What is a commit
 
-![](img/git-collaborative-work.svg)
+![](img/git/branches/git-collaborative-work.svg)
 
 - Commits are changes
 - Characterized by a 40-character hash (checksum)
@@ -59,7 +59,7 @@ layout: false
 
 ## Working with branches
 
-![](img/git-branch-01.svg)
+![](img/git/branches/git-branch-01.svg)
 
 - Branches are pointers that point to a commit
 - Branch `master` points to commit `c2`
@@ -82,7 +82,7 @@ d8247aa7a003786df7ef0acd3665842d6d57adcd
 
 ## Working with branches
 
-![](img/git-branch-01.svg)
+![](img/git/branches/git-branch-01.svg)
 
 - To see where we are (where HEAD points to) use `git branch`
 
@@ -102,7 +102,7 @@ $ git branch
 
 ## Working with branches
 
-![](img/git-branch-02.svg)
+![](img/git/branches/git-branch-02.svg)
 
 - Let us create a new branch called `devel`
 
@@ -124,7 +124,7 @@ $ git branch
 
 ## Working with branches
 
-![](img/git-branch-03.svg)
+![](img/git/branches/git-branch-03.svg)
 
 - With `git checkout` we can switch between branches
 
@@ -145,7 +145,7 @@ $ git branch
 
 ## Working with branches
 
-![](img/git-branch-04.svg)
+![](img/git/branches/git-branch-04.svg)
 
 - We do some work, make few commits on `devel`
 - As we commit, the branch pointer as well as `HEAD` move
@@ -156,7 +156,7 @@ $ git branch
 
 ## Working with branches
 
-![](img/git-branch-05.svg)
+![](img/git/branches/git-branch-05.svg)
 
 - Let us switch back to `master`
 
@@ -168,7 +168,7 @@ $ git checkout master
 
 ## Working with branches
 
-![](img/git-branch-06.svg)
+![](img/git/branches/git-branch-06.svg)
 
 - We do some work on `master`, independent of `devel`
 - As we commit, the `master` pointer as well as `HEAD` move
@@ -179,7 +179,7 @@ $ git checkout master
 
 ## Working with branches
 
-![](img/git-branch-07.svg)
+![](img/git/branches/git-branch-07.svg)
 
 - Having committed some work to `master`, let us switch back to `devel`
 
@@ -193,7 +193,7 @@ $ git checkout devel
 
 ## Working with branches
 
-![](img/git-branch-08.svg)
+![](img/git/branches/git-branch-08.svg)
 
 - Imagine that `master` has received some important bugfixes and `devel` needs them
 - Let us merge these commits to `devel`
@@ -212,7 +212,7 @@ $ git merge master
 
 ## Working with branches
 
-![](img/git-branch-09.svg)
+![](img/git/branches/git-branch-09.svg)
 
 - Let us do more work on `devel` ...
 
@@ -220,7 +220,7 @@ $ git merge master
 
 ## Working with branches
 
-![](img/git-branch-10.svg)
+![](img/git/branches/git-branch-10.svg)
 
 - Having committed some work to `devel`, let us switch back to `master`
 
@@ -232,7 +232,7 @@ $ git checkout master
 
 ## Working with branches
 
-![](img/git-branch-11.svg)
+![](img/git/branches/git-branch-11.svg)
 
 - Let us do more work on `master` ...
 - Again the pointers move as we commit
@@ -242,7 +242,7 @@ $ git checkout master
 
 ## Working with branches
 
-![](img/git-branch-12.svg)
+![](img/git/branches/git-branch-12.svg)
 
 - Merge from `devel` to "here" (`master`)
 
@@ -256,7 +256,7 @@ $ git merge devel
 
 ## Working with branches
 
-![](img/git-branch-13.svg)
+![](img/git/branches/git-branch-13.svg)
 
 - We can imagine that all the work on `devel` is completed
 - This work has been integrated to `master`
@@ -371,7 +371,7 @@ $ git branch -d museum
 - To clarify what is meant by "fast-forward" imagine that you are on `master` and want to merge `devel`
 - What will happen if we `git merge devel`?
 
-![](img/pre-ff.svg)
+![](img/git/branches/pre-ff.svg)
 
 ---
 
@@ -382,7 +382,7 @@ $ git branch -d museum
   without creating a merge commit
 - This is a fast-forward merge
 
-![](img/ff.svg)
+![](img/git/branches/ff.svg)
 
 - The default in Git is to fast-forward merge when possible
 
@@ -396,7 +396,7 @@ $ git branch -d museum
 $ git merge --no-ff devel
 ```
 
-![](img/no-ff.svg)
+![](img/git/branches/no-ff.svg)
 
 - Both is fine, the resulting code is the same, not the history
 - It is a matter of taste or convention
@@ -408,11 +408,11 @@ $ git merge --no-ff devel
 - To illustrate rebasing we consider the following situation
 - We want to merge `master`
 
-![](img/pre-rebase.svg)
+![](img/git/branches/pre-rebase.svg)
 
 - Now you know how to do it
 
-![](img/git-branch-08.svg)
+![](img/git/branches/git-branch-08.svg)
 
 ---
 
@@ -424,7 +424,7 @@ $ git merge --no-ff devel
 $ git rebase master
 ```
 
-![](img/rebase.svg)
+![](img/git/branches/rebase.svg)
 
 - `git rebase` replays the branch commits `b1` to `b3` on top of `master`
 - As if they were committed after `c5`
@@ -441,7 +441,7 @@ $ git rebase master
   (history has changed)
 - Reference: "Treehouse of Horror V: Time and Punishment", The Simpsons (1994)
 
-![](img/simpsons.jpg)
+![](img/git/branches/simpsons.jpg)
 
 ---
 
@@ -455,7 +455,7 @@ $ git rebase master
 - Index and working directory remain without changes
 - So we can commit all the changes in one single commit
 
-![](img/git-reset-soft-1.svg)
+![](img/git/branches/git-reset-soft-1.svg)
 
 ---
 
@@ -468,7 +468,7 @@ $ git reset --soft HEAD~1     # we reset to commit one before the merge
 $ git commit                  # one single commit
 ```
 
-![](img/git-reset-soft-2.svg)
+![](img/git/branches/git-reset-soft-2.svg)
 
 ---
 
