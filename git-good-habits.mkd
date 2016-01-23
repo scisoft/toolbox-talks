@@ -1,0 +1,208 @@
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# Good Git habits (TM)
+
+## Radovan Bast
+
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Code examples: [OSI](http://opensource.org)-approved [MIT license](http://opensource.org/licenses/mit-license.html).
+
+---
+
+layout: false
+
+## Good programming practices come from experience
+
+---
+
+## Good programming practices come from experience
+
+## Experience comes from bad programming practices
+
+---
+
+## Frequent situation: interrupted work
+
+- Your supervisor comes in and wants you to fix/commit something right now
+- You are in the middle of a Jackson-Pollock-style debugging spree with 27 modified files
+  and debugging prints everywhere
+- What to do?
+- What to do with uncommitted code?
+
+---
+
+## What to do with uncommitted code?
+
+- Commit it
+- But sometimes you do not want to, sometimes you want to hide your changes for 5 minutes,
+  do something else, then bring them back and continue
+- You can do this with `git stash`
+
+```shell
+$ git stash        # your modifications are stashed away
+$ git stash pop    # your modifications are back
+```
+
+- It is a stack, you can stash several batches of modifications
+
+```shell
+$ git stash        # stash your debug code away
+$ git commit       # fix something for the boss, commit it
+$ git stash pop    # now you can continue
+```
+
+---
+
+## Every commit on (central) master should compile
+
+- Sometimes you want to find a commit in the past that broke some functionality
+- When using `git bisect` you will see that it is very helpful if all commits compile
+- On the other hand you will see that it is annoying if you hit a commit that does not compile
+- This is why we insist so much on compiling central master with nice history
+- There is no reason to commit broken or unfinished code to master: for this we have branches
+
+---
+
+## Branch hygiene
+
+- You committed 3 commits but would like to squash them into one
+
+```shell
+$ git log --oneline
+
+6e129cf documentation for feature C
+05344f6 small fix for feature C
+bc11c47 save work on feature C
+aa25177 feature B
+6b58ba4 feature A
+```
+
+- We have no uncommitted changes
+- We wish our last 3 commits (6e129cf, 05344f6, bc11c47) were just one
+- We use a soft reset:
+
+```shell
+$ git reset --soft aa25177
+```
+
+- This means that we move our repository back to commit aa25177
+  BUT we keep the working tree of the last commit (6e129cf)
+
+---
+
+## Squashing commits
+
+```shell
+$ git reset --soft aa25177
+```
+
+- Verify the result with `git status`
+- Now we can commit modifications w.r.t. `aa25177` in one single nice commit
+
+```shell
+$ git commit -m 'feature C'
+
+81e100c feature C
+aa25177 feature B
+6b58ba4 feature A
+```
+
+- The history tells us that we committed our work in a single commit `81e100c`
+- The final state of the actual code is identical
+- Alternative to `git reset --soft` is an interactive rebase
+- We recommend to create commits on the master branch which are nice logical
+  units
+- Commits should be pickable (not too large not too small for a `cherry-pick`)
+- Avoid ball-of-mud commits
+
+---
+
+## When is a good moment to pull?
+
+- Real example
+    - A developer committed big changes to local master
+    - But he did not pull or push for several weeks
+    - When he tried to push, he could not because origin/master was out of date
+    - When he tried to pull in order to update origin/master there were conflicts everywhere
+    - After this experience he hated Git
+
+---
+
+## When is a good moment to pull?
+
+- Explanation
+    - Local master and remote master are two different branches
+    - Local feature branch and remote feature branch are two different branches
+    - `git pull` fetches and merges
+    - If you never pull then the branches may diverge
+    - `git pull` often to stay in sync with upstream development
+    - `git push` whenever you want other people to know about your changes
+    - If you never `git push` others will not see your changes
+    - Nontrivial changes should not be done on master
+
+---
+
+## Clean working area
+
+- Use `git status` a lot
+- Use `.gitignore`
+- Untracked files belong to .gitignore
+- **All** files should either be tracked or ignored
+
+---
+
+## Other recommendations
+
+- Try and use `git difftool`
+- Try and use `git grep`
+- Do not program big things on master
+- Talk with your colleagues to avoid conflicts
+- Do not `git rebase` unless you have it completely under control
+- On master pull with `git pull --rebase`
+- Divide and conquer: do not create a branch for "everything"
+- The more you do on one branch the longer it will take until you can reintegrate it to master
+
+---
+
+## Your branch or my branch?
+
+- Trivial commits like typos or trivial bugfixes can go directly to master
+- But test before you push
+- For an afternoon project a local branch is a good idea (think about/ discuss why)
+- For longer projects create a remote branch (think about/ discuss why)
+- To work with other people create a remote branch (think about/ discuss why)
+
+---
+
+## Branch naming
+
+- Name your local branches so that you will recognize them 3 months later
+- "test", "foo", "oof" are not good
+- Give descriptive names to remote branches
+- For topic branches we recommend to name them "author/topic" (example `radovan/new-integrator`)
+- Then everybody knows who is to be contacted about this branch (e.g. stale branches)
+- Also you can easily find "your" branches
+
+```shell
+$ git branch -r | grep radovan
+```
+
+- Name bugfix branches after the issue/ticket (e.g. `issue-137`)
+- For release branches we recommend e.g. `release-2.X`
+
+---
+
+## Staging everything
+
+- Sometimes you want to stage all modifications
+- No need to stage them one by one
+
+```shell
+$ git add -u
+```
+
+- Also removals of tracked files are then automatically staged
