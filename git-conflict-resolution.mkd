@@ -256,7 +256,7 @@ $ git reset --hard HEAD # throws away everything that is not in HEAD
 - You decide to fix this defect right on your new branch "while at it"
 - This is a **bad idea** - why?
 
-![](img/git/confict-resolution/git-fix-1.jpg)
+![](img/git/confict-resolution/git-fix-1.svg)
 
 ---
 
@@ -279,7 +279,7 @@ $ git reset --hard HEAD # throws away everything that is not in HEAD
     - Fix it on `master`, so other developers can see it
     - Than merge it to your development/topic branch
 
-![](img/git/confict-resolution/git-fix-2.jpg)
+![](img/git/confict-resolution/git-fix-2.svg)
 
 ---
 
@@ -292,7 +292,7 @@ $ git reset --hard HEAD # throws away everything that is not in HEAD
 - And it is a public branch, what now?
 - `git cherry-pick` the commit to the "right" branch
 
-![](img/git/confict-resolution/git-fix-3.jpg)
+![](img/git/confict-resolution/git-fix-3.svg)
 
 ---
 
