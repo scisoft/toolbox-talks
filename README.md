@@ -9,6 +9,7 @@
 - [Working with Github](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/github.mkd/remark/)
 - [Archaeology with Git](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-archaeology.mkd/remark/)
 - [Including external projects using Git submodules](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-submodules.mkd/remark/)
+- [Collaboration via distributed version control](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-distributed.mkd/remark/)
 - [Modern code documentation](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/documentation.mkd/remark/)
 - [Profiling and code optimization](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/optimiziation.mkd/remark/)
 - [Test-driven development](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/tdd.mkd/remark/)
