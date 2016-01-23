@@ -447,15 +447,11 @@ $ git remote -v
 
 ---
 
-## Centralized layout
+## Repository layouts
 
-<canvas id="graph_centralized" width="600" height="480" />
-
----
-
-## Fork/pull-request layout for code review
-
-<canvas id="graph_fork" width="600" height="480" />
+- Centralized layout
+- Decentralized layout
+- Fork/pull-request layout
 
 ---
 
