@@ -192,7 +192,7 @@ $ git branch -r | grep radovan
 ```
 
 - Name bugfix branches after the issue/ticket (e.g. `issue-137`)
-- For release branches we recommend e.g. `release-2.X`
+- For release branches we recommend `release-2.x` or `release/2.x` or `stable/2.x`
 
 ---
 
