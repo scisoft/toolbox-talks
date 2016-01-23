@@ -44,13 +44,19 @@ template: inverse
 - Have you ever made a backup copy of source files before modifying them?
 
 ```shell
-$ cp taylor.F90 taylor.F90_backup
-$ vi taylor.F90
+$ cp complicated.py complicated.py.backup
+$ vi complicated.py
 ```
 - Have you ever wished you had done a backup copy before you completely broke a source code and had to start over?
 - Programming is an iterative process
 - When you code typically there comes a point where the code gets broken
 - It would be nice to be able to go back
+
+---
+
+template: inverse
+
+## How many of you have used the "undo" button when you edit a document?
 
 ---
 
@@ -69,7 +75,6 @@ $ vi taylor.F90
 - We can compare revisions
 - Compare with Apple Time Machine
 - The simplest VCS would be to copy the entire project somewhere and give it a revision number/name
-- Simplicity is king
 
 ---
 
@@ -106,10 +111,6 @@ MAG-mDKS-20.7.09.tgz              ReSpect-AFDZ-1.3.3_WK_13.8.08.tgz
 ---
 
 ## Motivation for version control: collaboration
-
-- Programs "cannot" be developed without a version control
-    - You can work without a version control in the sense that you can traverse the Atlantic ocean in a kayak
-    - Once we get used to version control and Git we will not want to do any programming without
 
 - Version control is great for collaborative work
     - Programs are often developed by many people in parallel
@@ -158,10 +159,7 @@ MAG-mDKS-20.7.09.tgz              ReSpect-AFDZ-1.3.3_WK_13.8.08.tgz
 
 ## Version control market
 
-![](img/git/intro/pie.jpg)
-
-- Source: http://www.ohloh.net/repositories/compare (2014-09-04)
-- Indexed ca. 680000 software projects
+- https://www.openhub.net/repositories/compare
 - Not fully representative but gives an idea
 
 ---
@@ -191,6 +189,7 @@ MAG-mDKS-20.7.09.tgz              ReSpect-AFDZ-1.3.3_WK_13.8.08.tgz
   ALSA, Android, Fedora, GCC, GNU Autotools, GNOME, phpMyAdmin, Ruby on Rails, Samba, VLC, Wine,  X11, Yum, ...
 - It is the version control tool with the most traction
 - "Git is a four-handle, dual boiler espresso machine, not instant coffee".
+- DAG
 
 ---
 
@@ -276,337 +275,35 @@ template: inverse
 
 ---
 
-## Example project
+## Exercising a basic Git cycle
 
-![](img/git/intro/pythagorean.svg)
-
-- Write a program that computes all Pythagorean triples (a, b, c) up to a certain limit m (a < b < c <= m)
-
----
-
-## Example project
-
-- Programming is iterative
-- At this point we do not know how the final program will look
-- First version could look like this
-
-```python
-# loop over all a < b < c <= 20
-for c in xrange(1, 21):
-    for b in xrange(1, c):
-        for a in xrange(1, b):
-            if a*a + b*b == c*c:
-                print("(%i, %i, %i)" % (a, b, c))
-```
-
-- Good reflex: before continuing we want to track this file using Git
-
----
-
-## Initializing a Git repository
+- Write a haiku and track it with Git (we do this together
+  interactively in the terminal)
 
 ```shell
-$ mkdir triangle
-$ cd triangle
+On a branch ...
+        by Kobayashi Issa
+
+    On a branch
+    floating downriver
+    a cricket, singing.
+```
+
+---
+
+## Exercising a basic Git cycle
+
+```shell
 $ git init
-
-Initialized empty Git repository in /home/bast/triangle/.git/
-```
-
-- Initializing a Git repository is as easy as typing `git init`.
-
-- We examine what we have with `git status`
-
-```shell
+$ git add
 $ git status
-
-# On branch master
-#
-# Initial commit
-#
-nothing to commit (create/copy files and use "git add" to track)
-```
-
----
-
-## Adding a file to the Git repository
-
-- We write the first version of the code and call it `triangle.py`
-
-```python
-# loop over all a < b < c <= 20
-for c in xrange(1, 21):
-    for b in xrange(1, c):
-        for a in xrange(1, b):
-            if a*a + b*b == c*c:
-                print("(%i, %i, %i)" % (a, b, c))
-```
-
-- We again examine what we have with `git status`
-
-```shell
-$ git status
-
-# On branch master
-#
-# Initial commit
-#
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#	triangle.py
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
----
-
-## Adding a file to the Git repository
-
-- Git tells us that if we want to track the changes of `triangle.py` we need to use `git add`
-
-- We add the file (we stage it)
-
-```shell
-$ git add triangle.py
-$ git status
-
-# On branch master
-#
-# Initial commit
-#
-# Changes to be committed:
-#   (use "git rm --cached <file>..." to unstage)
-#
-#	new file:   triangle.py
-```
-
-- Then we commit the change (we save the state of the repository)
-
-```shell
-$ git commit
-```
-
----
-
-## Committing a change
-
-- This opens up the editor of your choice (the one we set at the beginning of this lesson)
-- And we write a sensible commit log message (e.g. "print Pythagorean triples up to c = 20")
-
-```shell
-print Pythagorean triples up to c = 20
-# Please enter the commit message for your changes. Lines starting
-# with '#' will be ignored, and an empty message aborts the commit.
-# On branch master
-#
-# Initial commit
-#
-# Changes to be committed:
-#   (use "git rm --cached <file>..." to unstage)
-#
-#       new file:   triangle.py
-```
-
----
-
-## Committing a change
-
-- After closing the editor Git confirms the commit
-
-```shell
-[master (root-commit) 4fc4b95] print Pythagorean triples up to c = 20
- 1 file changed, 7 insertions(+)
- create mode 100644 triangle.py
-```
-
-- This means that we have saved the state of `triangle.py`
-
-```shell
-$ git status
-
-# On branch master
-nothing to commit (working directory clean)
-
-$ git log
-
-commit 4fc4b9528bf6a476dbc9e4a10e73c217232b495d
-Author: Radovan Bast <rbast@users.noreply.github.com>
-Date:   Sat Nov 22 15:32:06 2014 +0100
-
-    print Pythagorean triples up to c = 20
-```
-
----
-
-## Git basics
-
-- Let us program some more
-
-```python
-import sys
-
-# read m from stdin
-m = int(sys.argv[1])
-
-# loop over all a < b < c <= m
-for c in xrange(1, m+1):
-    for b in xrange(1, c):
-        for a in xrange(1, b):
-            if a*a + b*b == c*c:
-                print("(%i, %i, %i)" % (a, b, c))
-```
-
----
-
-## Git basics
-
-- We can examine the local changes
-
-```shell
+$ git commit -m "commit message"
 $ git diff
-
-diff --git a/triangle.py b/triangle.py
-index 0e54e88..cc52fe2 100644
---- a/triangle.py
-+++ b/triangle.py
-@@ -1,6 +1,11 @@
-
--# loop over all a < b < c <= 20
--for c in xrange(1, 21):
-+import sys
-+
-+# read m from stdin
-+m = int(sys.argv[1])
-+
-+# loop over all a < b < c <= m
-+for c in xrange(1, m+1):
-     for b in xrange(1, c):
-         for a in xrange(1, b):
-             if a*a + b*b == c*c:
-```
-
-- Aha! (observe the pluses and minuses)
-
----
-
-## Git basics
-
-- Good, now we commit this change
-- First we stage the file (`git add`) then we commit (`git commit`)
-
-```shell
-$ git add triangle.py
-$ git commit
-```
-
-- Again we write a commit log message ("read upper limit from stdin")
-
-```shell
 $ git log
-
-commit 45831a59319d4a0df7cbb5c784bc044eae587370
-Author: Radovan Bast <rbast@users.noreply.github.com>
-Date:   Sat Nov 22 15:32:52 2014 +0100
-
-    read upper limit from stdin
-
-commit 4fc4b9528bf6a476dbc9e4a10e73c217232b495d
-Author: Radovan Bast <rbast@users.noreply.github.com>
-Date:   Sat Nov 22 15:32:06 2014 +0100
-
-    print Pythagorean triples up to c = 20
+$ git show
 ```
 
----
-
-## Git basics
-
-- You can commit the change directly, without staging it first
-
-```shell
-$ git commit triangle.py
-```
-
-- First staging and then committing files is very good practice
-  (later we will see why)
-
-```shell
-$ git add triangle.py
-$ git commit
-```
-
----
-
-- Few commits later the code looks like this:
-
-```python
-import sys
-
-# read m and n from stdin
-m = int(sys.argv[1])
-n = int(sys.argv[2])
-
-# loop over all a < b < c <= m
-for c in xrange(1, m+1):
-    cp = c**n
-    for b in xrange(1, c):
-        bp = b**n
-        for a in xrange(1, b):
-            ap = a**n
-            if ap + bp == cp:
-                print("(%i, %i, %i)" % (a, b, c))
-                break # no need to continue loop a
-```
-
-- With the corresponding code history
-
-```shell
-$ git log --oneline
-
-0a31903 make it possible to test Fermat Theorem
-bf39f9d break loop a if triple found
-49dc419 do not recompute powers
-45831a5 read upper limit from stdin
-4fc4b95 print Pythagorean triples up to c = 20
-```
-
----
-
-- Now without `--oneline`
-
-```shell
-$ git log
-
-commit 0a31903e48c53656c6db55fa4b5f9abf50491929
-Author: Radovan Bast <rbast@users.noreply.github.com>
-Date:   Sat Nov 22 15:34:42 2014 +0100
-
-    make it possible to test Fermat Theorem
-
-commit bf39f9d3f2b2867e1c66d58d3c4a32842c7f80d5
-Author: Radovan Bast <rbast@users.noreply.github.com>
-Date:   Sat Nov 22 15:33:37 2014 +0100
-
-    break loop a if triple found
-
-commit 49dc419c8a44051cfe7826b85ee0a23e5faf3975
-Author: Radovan Bast <rbast@users.noreply.github.com>
-Date:   Sat Nov 22 15:33:15 2014 +0100
-
-    do not recompute powers
-
-commit 45831a59319d4a0df7cbb5c784bc044eae587370
-Author: Radovan Bast <rbast@users.noreply.github.com>
-Date:   Sat Nov 22 15:32:52 2014 +0100
-
-    read upper limit from stdin
-
-commit 4fc4b9528bf6a476dbc9e4a10e73c217232b495d
-Author: Radovan Bast <rbast@users.noreply.github.com>
-Date:   Sat Nov 22 15:32:06 2014 +0100
-
-    print Pythagorean triples up to c = 20
-```
+- Exercise muscle memory
 
 ---
 
