@@ -23,7 +23,7 @@ layout: false
 
 ```
 project-A
-*  - module-X
+* - module-X
   - module-Y
   - module-Z
 
@@ -31,7 +31,7 @@ project-B
   - module-U
   - module-V
   - module-W
-*  - module-X
+* - module-X
 ```
 
 - Projects A and B are independent repositories with own histories
@@ -241,6 +241,7 @@ $ git push origin master    # push to master branch of parent repo
 - If you distribute code that requires Git submodules, then users need read-access to those
 - Adds an extra layer (one Git history referencing other Git history; can confuse developers not
   used to the Git submodule workflow)
+- Increases complexity in debugging and compilation
 
 ## Gotchas
 
