@@ -20,6 +20,8 @@ layout: false
 - Over 3 million users
 - Over 10 million repositories
 - Largest code host in the world
+- Standard today
+- GitHub activity good for your CV
 - Overview
 - Creating projects
 - Accessing projects (https or ssh)
@@ -28,11 +30,9 @@ layout: false
 - Wiki
 - Fork/pull-request mechanism: like peer review
 - GitHub Pages
-- Statistics
 - Hooks
 - Gist
 - KTH has GitHub Enterprise
-- CV
 
 ---
 
