@@ -298,7 +298,7 @@ $ git reset --hard HEAD # throws away everything that is not in HEAD
 
 ## Develop separate features on separate branches
 
-![](img/git/confict-resolution/git-split-branch-1.jpg)
+![](img/git/confict-resolution/git-split-branch-1.svg)
 
 - You made few commits to the `master` branch
 - You then realize that it broke some tests but you have no time now to fix them
@@ -309,7 +309,7 @@ $ git reset --hard HEAD # throws away everything that is not in HEAD
 
 ## Develop separate features on separate branches
 
-![](img/git/confict-resolution/git-split-branch-2.jpg)
+![](img/git/confict-resolution/git-split-branch-2.svg)
 
 - First make sure that your working directory and index are empty
 - Then create a new branch (e.g. `feature`)
@@ -318,7 +318,7 @@ $ git reset --hard HEAD # throws away everything that is not in HEAD
 
 ## Develop separate features on separate branches
 
-![](img/git/confict-resolution/git-split-branch-3.jpg)
+![](img/git/confict-resolution/git-split-branch-3.svg)
 
 - Now just reset `master` back three commits
 
