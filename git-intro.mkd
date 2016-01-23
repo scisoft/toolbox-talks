@@ -505,7 +505,7 @@ $ cat .gitignore
 
 template: inverse
 
-# Undoing things
+# Using the staging area
 
 ---
 
@@ -522,254 +522,6 @@ template: inverse
 $ git add          # working directory --> staging area
 $ git commit       # staging area becomes the new commit (HEAD)
 ```
-
-### Undoing things
-
-- In the following we will learn how to revert code changes that
-    - have not yet been staged
-    - have been staged but not committed
-    - have been committed
-
----
-
-## Reverting unstaged changes
-
-- We will modify `triangle.py` with some silly code
-
-```shell
-$ git diff
-
-diff --git a/triangle.py b/triangle.py
-index c693105..11376a3 100644
---- a/triangle.py
-+++ b/triangle.py
-@@ -14,3 +14,13 @@ for c in xrange(1, m+1):
-             if ap + bp == cp:
-                 print("(%i, %i, %i)" % (a, b, c))
-                 break # no need to continue loop a
-+
-+
-+def wild_idea():
-+    """
-+    testing a wild idea
-+    """
-+    return something
-+
-+
-+something = wild_idea()
-```
-
----
-
-## Reverting unstaged changes
-
-- This change is neither staged nor committed
-
-```shell
-$ git status
-
-# On branch master
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   triangle.py
-#
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
-- We can revert to the last staged or committed version with `git checkout`
-
-```shell
-$ git checkout triangle.py
-$ git status
-
-# On branch master
-nothing to commit, working directory clean
-```
-
-- Think of `git checkout` as to fetch the last staged/committed version from `.git`
-
----
-
-## Reverting staged and uncommitted changes
-
-- To simulate this we make some silly code modification and stage the file
-
-```shell
-$ git add triangle.py
-$ git status
-
-# On branch master
-# Changes to be committed:
-#   (use "git reset HEAD <file>..." to unstage)
-#
-#	modified:   triangle.py
-```
-
-- Git tells us how to unstage the file (we already know how
-  to revert unstaged changes)
-
-```shell
-$ git reset HEAD triangle.py
-$ git status
-
-# On branch master
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   triangle.py
-```
-
----
-
-## Reverting committed changes
-
-- We realize that a specific commit in the past was a mistake
-
-```shell
-$ git show 0a31903e48c53656c6db55fa4b5f9abf50491929
-
-commit 0a31903e48c53656c6db55fa4b5f9abf50491929
-Author: Radovan Bast <rbast@users.noreply.github.com>
-Date:   Sat Nov 22 15:34:42 2014 +0100
-
-    make it possible to test Fermat Theorem
-...
--# read m from stdin
-+# read m and n from stdin
- m = int(sys.argv[1])
-+n = int(sys.argv[2])
-
- # loop over all a < b < c <= m
- for c in xrange(1, m+1):
--    cp = c*c
-+    cp = c**n
-     for b in xrange(1, c):
--        bp = b*b
-+        bp = b**n
-         for a in xrange(1, b):
--            ap = a*a
-+            ap = a**n
-             if ap + bp == cp:
-                 print("(%i, %i, %i)" % (a, b, c))
-                 break # no need to continue loop a
-```
-
----
-
-## Reverting committed changes
-
-- Let us revert it with `git revert`
-
-```shell
-$ git revert 0a31903
-```
-
-- Git automatically opens up a prepared commit message that you can accept or modify
-- Sometimes it is useful to extend the default message and explain why you revert
-
-```shell
-Revert "make it possible to test Fermat Theorem"
-
-This reverts commit 0a31903e48c53656c6db55fa4b5f9abf50491929.
-
-we know that there are no solutions since
-Wiles proof of Fermat Theorem
-```
-
----
-
-## Reverting committed changes
-
-- Let us verify the result:
-
-```shell
-$ git log --oneline
-
-a20d869 Revert "make it possible to test Fermat Theorem"
-0a31903 make it possible to test Fermat Theorem
-bf39f9d break loop a if triple found
-49dc419 do not recompute powers
-45831a5 read upper limit from stdin
-4fc4b95 print Pythagorean triples up to c = 20
-```
-
-- This also works with commits in the past, does not have to be the last one
-- You can also revert a revert (this happens)
-
----
-
-## Correcting incomplete commits
-
-- Imagine we just committed something but realize that the commit is incomplete
-- For instance we forgot to add a file
-- `git commit --amend` adds staged changes to the previous commit
-- If nothing is staged, we can use `git commit --amend` to modify the last commit message (e.g. to fix a horrible typo)
-- This does not modify the actual commit content but opens up
-  the message editor and lets you change it
-- `git commit --amend` replaces the last state with a new commit (and a new hash)
-- **Never use git commit --amend on commits that you have shared with others** (more about this later)
-
----
-
-## "Deleting" commits
-
-- In Git it is possible to remove commits
-
-```shell
-$ git log --oneline
-
-ce373ff another terribly terrible error
-87c9a94 a horribly embarrassing mistake
-0a31903 make it possible to test Fermat Theorem
-bf39f9d break loop a if triple found
-49dc419 do not recompute powers
-45831a5 read upper limit from stdin
-4fc4b95 print Pythagorean triples up to c = 20
-```
-
-- Imagine we want to go back to commit `0a31903` and completely remove commits `87c9a94` and `ce373ff`
-- This is possible with `git reset --hard` and `git reset --soft`
-
-```shell
-$ git reset --hard 0a31903
-$ git log --oneline
-
-0a31903 make it possible to test Fermat Theorem
-bf39f9d break loop a if triple found
-49dc419 do not recompute powers
-45831a5 read upper limit from stdin
-4fc4b95 print Pythagorean triples up to c = 20
-```
-
----
-
-## "Deleting" commits
-
-- **It is called --hard because it is dangerous, use with caution!**
-- The repository and the working tree is reset to state `0a31903`
-- All uncommitted changes will be lost for good!
-- It can be also useful if you want to reset your working tree to last committed state (HEAD)
-
-```shell
-$ git reset --hard HEAD        # DANGEROUS
-```
-
-- With `git reset --soft` you can "delete" commits, but you keep the code changes
-- `git reset --soft` puts your deleted commits into the staging area
-- **Never use git reset --soft or --hard on commits that you have shared with others**
-- Doing so would create conflicts for people who base their work on commits
-  that you have deleted (more about it later)
-- You can always do a `git revert` (it does not replace old commits, it does not change history)
-- `git revert` is the only safe option to undo changes that are shared with others
-
----
-
-template: inverse
-
-# Using the staging area
 
 ---
 
@@ -923,6 +675,87 @@ git checkout       |<---------|          |   undo unstaged modifications
 
 template: inverse
 
+# Undoing things
+
+---
+
+## Undoing things
+
+- In the following (interactive demo) we will learn how to revert code changes that
+    - have not yet been staged
+    - have been staged but not committed
+    - have been committed
+
+---
+
+## Correcting incomplete commits
+
+- Imagine we just committed something but realize that the commit is incomplete
+- For instance we forgot to add a file
+- `git commit --amend` adds staged changes to the previous commit
+- If nothing is staged, we can use `git commit --amend` to modify the last commit message (e.g. to fix a horrible typo)
+- This does not modify the actual commit content but opens up
+  the message editor and lets you change it
+- `git commit --amend` replaces the last state with a new commit (and a new hash)
+- **Never use git commit --amend on commits that you have shared with others** (more about this later)
+
+---
+
+## "Deleting" commits
+
+- In Git it is possible to remove commits
+
+```shell
+$ git log --oneline
+
+ce373ff another terribly terrible error
+87c9a94 a horribly embarrassing mistake
+0a31903 make it possible to test Fermat Theorem
+bf39f9d break loop a if triple found
+49dc419 do not recompute powers
+45831a5 read upper limit from stdin
+4fc4b95 print Pythagorean triples up to c = 20
+```
+
+- Imagine we want to go back to commit `0a31903` and completely remove commits `87c9a94` and `ce373ff`
+- This is possible with `git reset --hard` and `git reset --soft`
+
+```shell
+$ git reset --hard 0a31903
+$ git log --oneline
+
+0a31903 make it possible to test Fermat Theorem
+bf39f9d break loop a if triple found
+49dc419 do not recompute powers
+45831a5 read upper limit from stdin
+4fc4b95 print Pythagorean triples up to c = 20
+```
+
+---
+
+## "Deleting" commits
+
+- **It is called --hard because it is dangerous, use with caution!**
+- The repository and the working tree is reset to state `0a31903`
+- All uncommitted changes will be lost for good!
+- It can be also useful if you want to reset your working tree to last committed state (HEAD)
+
+```shell
+$ git reset --hard HEAD        # DANGEROUS
+```
+
+- With `git reset --soft` you can "delete" commits, but you keep the code changes
+- `git reset --soft` puts your deleted commits into the staging area
+- **Never use git reset --soft or --hard on commits that you have shared with others**
+- Doing so would create conflicts for people who base their work on commits
+  that you have deleted (more about it later)
+- You can always do a `git revert` (it does not replace old commits, it does not change history)
+- `git revert` is the only safe option to undo changes that are shared with others
+
+---
+
+template: inverse
+
 # Summary
 
 ---
@@ -951,7 +784,7 @@ template: inverse
 
 - Free cloud hosting of Git projects
     - https://github.com
-    - http://gitorious.org
+    - https://gitlab.com
     - https://bitbucket.org
 
 - We will learn about GitHub later during the course
