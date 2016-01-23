@@ -478,7 +478,7 @@ $ git status
 #       a.out
 ```
 
-- Files that are not supposed to be tracked belong in `.gitignore` (object files, compiled code, generated files, *.pyc files, generated *.pdf files)
+- Files that are not supposed to be tracked belong in `.gitignore` (object files, compiled code, generated files, \*.pyc files, generated \*.pdf files)
 - `.gitignore` understands regular expressions and is valid for all subdirectories
 - Use `.gitignore` otherwise `git status` is flooded with untracked files and useless
 - People who do not use `git status` make mistakes (e.g. forget to add files)
