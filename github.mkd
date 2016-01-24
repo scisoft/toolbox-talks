@@ -20,15 +20,17 @@ layout: false
 - Over 3 million users
 - Over 10 million repositories
 - Largest code host in the world
-- Standard today
+- Today the de facto standard
 - GitHub activity good for your CV
 - Overview
-- Creating projects
+- Creating and deleting projects
 - Accessing projects (https or ssh)
 - README.md
 - Issues (tickets)
 - Wiki
 - Fork/pull-request mechanism: like peer review
+- Autoclosing issues
+- Discussing with mentions
 - GitHub Pages
 - Hooks
 - Gist
@@ -102,6 +104,7 @@ $ git push origin master
 ## Pull-request
 
 - We can file a pull-request
+- A pull-request means: "please review my changes and if you agree, merge them with a mouseclick"
 
 **https://github.com/foo/foo.git**
 ![](img/git/github/github-remote-01.svg)
