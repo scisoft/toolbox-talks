@@ -335,8 +335,14 @@ $ git reset --hard c2 # on master
 
 ## When is a good moment to merge?
 
-- Merge `master` to your branch ideally should never conflict
-- But it will sometimes, resolve conflicts early
-- It is good to merge `master` to your topic branch often to stay in sync with main development line
 - Feature branch merges to `master` typically once (at the end of its lifetime)
 - But there may be good reasons for merging branch to `master` more often (release branch)
+- Never merge a feature branch into another feature branch (branch pollution; discuss why)
+
+- For modular projects with write-protected `master` and code review and very high discipline
+    - You typically should not merge `master` except the occasional `git cherry-pick`
+
+- For entangled projects where most of the development happens directly on `master`
+    - It is good to merge `master` to your topic branch often to stay in sync with main development line
+    - Merge `master` to your branch ideally should never conflict
+    - But it will sometimes, resolve conflicts early
