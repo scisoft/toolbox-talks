@@ -22,7 +22,7 @@ layout: false
 - Cloning repositories
 - Collaboration with others
 - Fetching changes from remote repositories
-- Pushing your changes to remote repositories
+- Pushing changes to remote repositories
 
 ---
 
@@ -48,7 +48,7 @@ layout: false
 $ git init # creates a non-bare repository
 ```
 
-- A non-bare repository contains `.git` and "files"
+- A non-bare repository contains `.git` and "the normal files"
 - We can checkout local branches
 - We can and do work inside non-bare repositories
 
@@ -85,7 +85,7 @@ host2$ git clone ssh://user@host1/path/to/repo [/path/to/clone] # non-bare
 
 - A clone is a full-fledged repository
 - We can clone again and again
-- Typically we create a star-topology or tree-topologies
+- Typically we create a star-topology or tree-topologies or triangular topologies
 
 ---
 
@@ -208,6 +208,7 @@ $ git pull origin master
 - Summary: `git pull origin master` fetches `master` from `origin` and merges it
 - There is always a `git merge` "hidden" in `git pull`
 - Many people will simply `git pull`, very careful people first `git fetch` and inspect the commits before merging them
+- With Git you typically merge several times a day without even noticing
 
 ---
 
@@ -322,10 +323,8 @@ $ git push -u origin cool-branch # push to origin and set as upstream
 - We can also delete remote branches
 
 ```shell
-$ git push origin :cool-branch
+$ git push origin --delete cool-branch
 ```
-
-- This strange command means to push an empty " " branch over the cool-branch, thus deleting it
 
 ---
 
@@ -336,8 +335,8 @@ $ git push origin :cool-branch
 ```shell
 $ git remote -v
 
-origin	user@ssh.pythonanywhere.com:somerepo (fetch)
-origin	user@ssh.pythonanywhere.com:somerepo (push)
+origin	user@somehost:somerepo (fetch)
+origin	user@somehost:somerepo (push)
 ```
 
 - You communicate commits with `git fetch`/`git pull` and `git push`
@@ -460,6 +459,7 @@ $ git remote -v
 - Tags are also just pointers to commits
 - While branches are mutable, tags are (typically) immutable
 - Tags can carry extra annotation
+- Always tag your releases
 
 ```shell
 $ git tag                             # list all tags
