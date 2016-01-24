@@ -22,8 +22,8 @@ layout: false
 - Configuring Git
 - Basic Git workflow
 - Linear and local development
-- Undoing things
 - Using the staging area
+- Undoing things
 
 ---
 
@@ -112,15 +112,17 @@ MAG-mDKS-20.7.09.tgz              ReSpect-AFDZ-1.3.3_WK_13.8.08.tgz
 
 ## Motivation for version control: collaboration
 
-- Version control is great for collaborative work
-    - Programs are often developed by many people in parallel
-    - It would be extremely tedious to synchronize this work manually
-    - We write manuscripts with collaborators ("can you please send me the last version?")
-    - Have you ever waited for your collaborator before making changes to a manuscript?
-    - Imagine you are the corresponding author and publish a paper with 20 collaborators
-    - Version controls enables us to work with several people on the same code at the same time
-    - Without the need for manual synchronization
-    - Without the risk of undoing the work of others by accident
+### Collaborative work
+
+- Programs are often developed by many people in parallel
+- It would be extremely tedious to synchronize this work manually
+- We write manuscripts with collaborators ("can you please send me the last version?")
+- Have you ever waited for your collaborator before making changes to a manuscript?
+- Imagine you are the corresponding author and publish a paper with 20 collaborators
+- Version controls enables us to work with several people on the same code at the same time
+- Without the need for manual synchronization
+- Without the risk of undoing the work of others by accident
+- For manuscripts we recommend https://www.overleaf.com
 
 ---
 
@@ -150,10 +152,11 @@ MAG-mDKS-20.7.09.tgz              ReSpect-AFDZ-1.3.3_WK_13.8.08.tgz
 
 ## Additional motivation for version control
 
-- Version control is also great in a one-man universe
-    - Often we work on the same thing from different computers/devices
-    - There are many USB sticks that commute between home and office
-    - We can use Git as a "Dropbox"
+### Version control is also great in a one-(wo)man universe
+
+- Often we work on the same thing from different computers/devices
+- There are many USB sticks that commute between home and office
+- We can use Git as a "Dropbox"
 
 ---
 
@@ -174,7 +177,7 @@ MAG-mDKS-20.7.09.tgz              ReSpect-AFDZ-1.3.3_WK_13.8.08.tgz
 
 ---
 
-## Why we will choose Git
+## Why we will choose Git (1/2)
 
 - Git is a distributed VCS
 - But supports any workflow (also legacy centralized modes of operation)
@@ -184,12 +187,19 @@ MAG-mDKS-20.7.09.tgz              ReSpect-AFDZ-1.3.3_WK_13.8.08.tgz
 - You can do commits, diffs, logs, branches, merges, annotation and more entirely offline
 - Merging development lines is trivial and fun
 - You get reasonable backup for free (because entire project history is distributed)
+
+---
+
+## Why we will choose Git (2/2)
+
 - Prominent companies and projects using Git:
   Linux Kernel, Google, Facebook, Microsoft, Twitter, Linkedin, Netflix, Perl, PostgreSQL,
   ALSA, Android, Fedora, GCC, GNU Autotools, GNOME, phpMyAdmin, Ruby on Rails, Samba, VLC, Wine,  X11, Yum, ...
 - It is the version control tool with the most traction
+- GitHub
 - "Git is a four-handle, dual boiler espresso machine, not instant coffee".
 - DAG
+- Immutable objects
 
 ---
 
@@ -303,7 +313,7 @@ $ git log
 $ git show
 ```
 
-- Exercise muscle memory
+- Everything in this course we will do with Git to get it into muscle memory
 
 ---
 
@@ -446,13 +456,6 @@ $ git rm         # remove tracked files
 
 ## Where is the Git repository?
 
-```shell
-$ ls -la
-
-drwx------ 8 bast bast 4096 Nov 22 17:26 .git
--rw------- 1 bast bast  351 Nov 22 17:26 triangle.py
-```
-
 - All the magic is under `.git`, all the history, all snapshot, all branches, everything
 - When we staged and committed files, we "copied" them into `.git`
 - Here we only track one file but we can track entire file trees
@@ -493,9 +496,8 @@ $ git status
 ```shell
 $ cat .gitignore
 
+ _build/
  build*/
- test/*/*out*
- test/*/compare
  *.pyc
 ```
 
@@ -597,27 +599,6 @@ location           .        .git       .git
 
 ## Checkpointing using the staging area
 
-- We want to do many small commits (checkpoints)
-- But at the end we want to commit in one nice commit
-- With `git add` we can prepare commits
-
-```shell
-$ git add file.py                 # checkpoint 1
-$ git add file.py                 # checkpoint 2
-$ git add another_file.py         # checkpoint 3
-$ git add another_file.py         # checkpoint 4
-$ git diff another_file.py        # diff w.r.t. checkpoint 4
-$ git checkout another_file.py    # oops go back to checkpoint 4
-$ git commit                      # commit everything that is staged
-```
-
-- `git diff` gives differences with respect to the staging area, this is very practical
-- Using `git add` we can fabricate very nice coherent commits
-
----
-
-## Checkpointing using the staging area
-
 ```shell
                 working    staging     HEAD
 command        directory    area         |   english
@@ -644,6 +625,27 @@ git checkout       |<--------------------|   if nothing is staged
 - `git checkout` every change that made things worse
 - `git commit` as soon as you have created a nice self-contained unit (not too large, not too small)
 - Discuss/think about what is too large or too small
+
+---
+
+## Checkpointing using the staging area
+
+- We want to do many small commits (checkpoints)
+- But at the end we want to commit in one nice commit
+- With `git add` we can prepare commits
+
+```shell
+$ git add file.py                 # checkpoint 1
+$ git add file.py                 # checkpoint 2
+$ git add another_file.py         # checkpoint 3
+$ git add another_file.py         # checkpoint 4
+$ git diff another_file.py        # diff w.r.t. checkpoint 4
+$ git checkout another_file.py    # oops go back to checkpoint 4
+$ git commit                      # commit everything that is staged
+```
+
+- `git diff` gives differences with respect to the staging area, this is very practical
+- Using `git add` we can fabricate very nice coherent commits
 
 ---
 
