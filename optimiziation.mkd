@@ -15,9 +15,35 @@ Code examples: [OSI](http://opensource.org)-approved [MIT license](http://openso
 
 layout: false
 
-## Priorities
+## When do we want to optimize the code?
 
-- write me
+- Code is too slow
+- Memory demand is too high
+
+### Things we can do about it
+
+- Buy faster computer
+- Buy more memory
+- Help the compiler
+- Change algorithm
+- Change data structures (optimize data access)
+- Port to a "faster language"
+- Parallelize
+- Port to another platform (GPU, accelerators)
+
+---
+
+## Profile first, optimize later
+
+- Before you invest money or time, identify the problem
+- Here insert famous Donald Knuth quote
+- Before solving the problem, verify whether it is worth it
+
+---
+
+## Profiling
+
+<img src="img/profile.png" style="width: 200px;"/>
 
 ---
 
@@ -32,9 +58,157 @@ layout: false
 
 ---
 
-## Profile first, optimize later
+## Profilers
 
-- write me
+## Statistical (sampling)
+
+- Collect data at regular intervals
+- Typically small overhead
+- Not all code is seen
+- May differ between execution
+- Show bottlenecks in production code
+- Can be used for monitoring over long execution runs
+- Reports on external library functions
+
+## Event-based (tracing)
+
+- Collect data (traces) for pre-defined events
+  (entering or leaving functions, object allocation, communication, disk I/O)
+- Modify the code
+- Often large overhead
+- Selective
+
+---
+
+## Profilers
+
+- "Home use", free
+    - Gprof
+    - Callgrind (Valgrind)
+    - Python: cProfile, profile
+    - OProfile
+
+- HPC, free
+    - HPCToolkit
+    - DynInst
+    - Extrae/Paraver
+    - Scalasca
+    - TAU
+
+- Commercial
+    - Vampir
+    - Allinea Performance Reports
+    - Allinea MAP
+    - CrayPat
+    - VTune Amplifier (Intel)
+
+---
+
+template: inverse
+
+## How would you profile stranded on an island?
+
+---
+
+## How would you profile stranded on an island?
+
+- Insert timers!
+- Everybody can do that
+- In any language
+- It is good to have timings anyhow in the output
+
+---
+
+## Before solving the problem, verify whether it is worth it
+
+- Human time often more valuable than CPU time
+- We often spend more time reading and writing code than computing with it
+- Compare your programming time multiplied with your salary to the cost of CPU
+  time that you will save
+- Is a 20% faster code worth 2 months of work?
+- Does it really matter whether the run takes 1 minute or 2 minutes
+- It probably matters if the computation takes 3 months
+- If your code is used by 5000 users then 20\% speedup may be worth it
+
+---
+
+## Performance vs. code obfuscation
+
+- When you optimize for speed/memory, typically you increase complexity
+- Imagine your code runs 40% faster but nobody understands it
+- If you have to complicate the code, keep the complexity localized
+- Define your priorities
+- Performance is typically not portable
+
+---
+
+## Complexity complexity complexity
+
+- We do not know the languages of tomorrow
+- We do not know the hardware of tomorrow
+- Code complexity may prevent us from porting our codes to soft- and hardware of tomorrow
+
+---
+
+## Buy faster computer
+
+- Moore's law
+- Frequency race
+- "The party isn't exactly over, but the police has arrived, and the music has been turned way down" (P. Kogge)
+- Today we need to think about parallelization
+
+---
+
+## Buy more memory
+
+- Number of cores/threads scales faster than memory
+- Today we need to think about parallelization
+- Linear scaling requires localization of memory access
+- Use tools to identify memory bottlenecks
+
+---
+
+## Help the compiler
+
+- Restrict types (Cython)
+- Use pragmas
+- Tell the compiler where the bottlenecks are
+- Tell the compiler where vectorization is possible
+
+---
+
+## Change algorithm
+
+- Consider increase in complexity
+- Pre-factor vs. scaling
+- "Slow" algorithm may catch the worm
+
+---
+
+## Change data structures (optimize data access)
+
+---
+
+## Port to a "faster language"
+
+- Every language allows to write slow code
+- Pre-factor vs. scaling
+- "Slow" language may catch the worm
+- Combine languages (FFI)
+- Functional programming vs. OOP
+
+---
+
+## Parallelize
+
+---
+
+## Port to another platform (GPU, accelerators)
+
+- Moving target
+- Trend goes towards multi-processor and multi-thread
+- If you rewrite your data structures for GPU/accelerators, the effort
+  is most probably not wasted
 
 ---
 
@@ -71,18 +245,7 @@ layout: false
 
 ---
 
-## Scaling and bottlenecks
-
-- pre-factor
-- scaling
-- YAGNI
-
----
-
-## Moving target
-
-- multi-processor
-- multi-thread
+## YAGNI
 
 ---
 
@@ -131,18 +294,6 @@ layout: false
 
 ---
 
-## Timers
-
-- write me
-
----
-
-## Frequency race
-
-- "The party isn't exactly over, but the police has arrived, and the music has been turned way down" (P. Kogge)
-
----
-
 ## Multiple loops
 
 - allocating/deallocating inside of multiple loops
@@ -163,31 +314,6 @@ layout: false
 
 ---
 
-## Performance vs. obfuscation
-
-- complexity
-- intrinsics
-
----
-
-## Human time vs. CPU time
-
-- write me
-
----
-
-## Prefactor vs. scaling
-
-- write me
-
----
-
-## Moore's law
-
-- write me
-
----
-
 ## Refactoring
 
 - natural process
@@ -195,54 +321,7 @@ layout: false
 
 ---
 
-## Profilers
-
-## Event-based (tracing)
-
-- Collect data (traces) for pre-defined events (entering or leaving functions, object allocation, communication, disk I/O)
-- Modify the code
-- Often large overhead
-- Selective
-
-## Statistical (sampling)
-
-- Collect data at regular intervals
-- Typically small overhead
-- Not all code is seen
-- May differ between execution
-- Show bottlenecks in production code
-- Can be used for monitoring over long execution runs
-- Reports on external library functions
-
----
-
-## Profilers
-
-- Free
-    - Gprof
-    - Callgrind (Valgrind)
-    - Python: cProfile, profile
-    - OProfile
-
-- HPC, free
-    - HPCToolkit
-    - DynInst
-    - Extrae/Paraver
-    - Scalasca
-    - TAU
-
-- Commercial
-    - Vampir
-    - Allinea Performance Reports
-    - Allinea MAP
-    - CrayPat
-    - VTune Amplifier (Intel)
-
----
-
 ## Conclusions
-
-### Performance is typically not portable
 
 ### Typical problems
 
@@ -265,3 +344,7 @@ layout: false
 
 - Profile first, optimize later
 - Trust but verify
+
+---
+
+## Example: profiling performance and memory in Python
