@@ -503,6 +503,15 @@ $ cat .gitignore
 
 - It is possible to ignore entire directories
 
+### Clean working area
+
+- Use `git status` a lot
+- Use `.gitignore`
+- Untracked files belong to .gitignore
+- **All** files should either be tracked or ignored
+
+---
+
 ---
 
 template: inverse

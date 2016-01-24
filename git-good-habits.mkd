@@ -146,15 +146,6 @@ aa25177 feature B
 
 ---
 
-## Clean working area
-
-- Use `git status` a lot
-- Use `.gitignore`
-- Untracked files belong to .gitignore
-- **All** files should either be tracked or ignored
-
----
-
 ## Other recommendations
 
 - Try and use `git difftool`
