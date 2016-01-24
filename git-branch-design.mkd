@@ -169,3 +169,4 @@ aa25177 feature B
 - Document your branching layout/strategy
 - Require your developers to follow it (code review)
 - Write-protect your main development line and release branch(es)
+- Use semantic versioning: http://semver.org
