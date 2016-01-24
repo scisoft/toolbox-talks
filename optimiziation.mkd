@@ -122,7 +122,7 @@ template: inverse
 ## Before solving the problem, verify whether it is worth it
 
 - Human time often more valuable than CPU time
-- We often spend more time reading and writing code than computing with it
+- We often spend more time reading and writing code than running it
 - Compare your programming time multiplied with your salary to the cost of CPU
   time that you will save
 - Is a 20% faster code worth 2 months of work?
@@ -147,6 +147,7 @@ template: inverse
 - We do not know the languages of tomorrow
 - We do not know the hardware of tomorrow
 - Code complexity may prevent us from porting our codes to soft- and hardware of tomorrow
+- Keep it simple as long as you can
 
 ---
 
