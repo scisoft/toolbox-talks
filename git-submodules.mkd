@@ -235,14 +235,6 @@ $ git push origin master    # push to master branch of parent repo
 
 ---
 
-## Disadvantages
-
-- If external sources are fetched at compile time, then network is required at compile time
-- If you distribute code that requires Git submodules, then users need read-access to those
-- Adds an extra layer (one Git history referencing other Git history; can confuse developers not
-  used to the Git submodule workflow)
-- Increases complexity in debugging and compilation
-
 ## Gotchas
 
 - In the initial state external source repositories do not point to any
@@ -252,3 +244,14 @@ $ git push origin master    # push to master branch of parent repo
 - Friendly advice: If you register (commit) a new reference, describe what changed in the submodule
   (or paste `git log --oneline` summary of commits)
 - If you move the repo that is included as submodule, then older commits of the parent repo may stop compiling
+
+---
+
+## Disadvantages
+
+- If external sources are fetched at compile time, then network is required at compile time
+- If you distribute code that requires Git submodules, then users need read-access to those
+- Adds an extra layer (one Git history referencing other Git history; can confuse developers not
+  used to the Git submodule workflow)
+- Increases complexity in debugging and compilation
+- If a submodule repo moves or disappears, then your past commits may stop working
