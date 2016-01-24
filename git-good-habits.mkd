@@ -193,16 +193,3 @@ $ git branch -r | grep radovan
 
 - Name bugfix branches after the issue/ticket (e.g. `issue-137`)
 - For release branches we recommend `release-2.x` or `release/2.x` or `stable/2.x`
-
----
-
-## Staging everything
-
-- Sometimes you want to stage all modifications
-- No need to stage them one by one
-
-```shell
-$ git add -u
-```
-
-- Also removals of tracked files are then automatically staged

@@ -649,6 +649,19 @@ $ git commit                      # commit everything that is staged
 
 ---
 
+## Staging everything
+
+- Sometimes you want to stage all modifications
+- No need to stage them one by one
+
+```shell
+$ git add -u
+```
+
+- Also removals of tracked files are then automatically staged
+
+---
+
 ## Working without the staging area
 
 ```shell
