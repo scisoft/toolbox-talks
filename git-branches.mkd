@@ -304,7 +304,7 @@ $ git checkout -b <name>   # create branch <name> and switch to it
 - Branches are the true power of Git
 - Git makes it easy to create branches, and to merge branches back to the main development line
 - **Both is important**
-- In Git branches are embarrassingly lightweight
+- In Git branches are ultra lightweight
 - Do not think of branches as copies (as in Subversion)
 - They are just pointers
 - It costs nothing to create new branches
@@ -429,6 +429,7 @@ $ git rebase master
 - `git rebase` replays the branch commits `b1` to `b3` on top of `master`
 - As if they were committed after `c5`
 - It changes history (notice that the commits `b1` to `b3` have been replaced by `b1*` to `b3*`)
+- Discuss advantages and disadvantages
 
 ---
 
@@ -469,6 +470,8 @@ $ git commit                  # one single commit
 ```
 
 ![](img/git/branches/git-reset-soft-2.svg)
+
+- Discuss alternatives to achieve this
 
 ---
 
@@ -514,3 +517,4 @@ $ git gc # run the garbage collector
 ```
 
 - But be careful: today's garbage might be tomorrow's gold
+- GitHub runs `git gc` on a periodic basis
