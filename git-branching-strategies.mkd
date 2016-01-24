@@ -4,7 +4,7 @@ class: center, middle, inverse
 
 ---
 
-# Good Git habits (TM)
+# Git brancing strategies
 
 ## Radovan Bast
 
