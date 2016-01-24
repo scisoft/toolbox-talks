@@ -15,16 +15,6 @@ Code examples: [OSI](http://opensource.org)-approved [MIT license](http://openso
 
 layout: false
 
-## Good programming practices come from experience
-
----
-
-## Good programming practices come from experience
-
-## Experience comes from bad programming practices
-
----
-
 ## Every commit on (central) master should compile
 
 - Sometimes you want to find a commit in the past that broke some functionality
