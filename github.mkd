@@ -4,7 +4,7 @@ class: center, middle, inverse
 
 ---
 
-# Working with Github
+# Working with GitHub
 
 ## Radovan Bast
 

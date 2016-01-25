@@ -7,7 +7,7 @@
 - [Branching and merging in Git](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-branches.mkd/remark/)
 - [Conflict resolution in Git](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-conflict-resolution.mkd/remark/)
 - [Collaboration via distributed version control](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-distributed.mkd/remark/)
-- [Working with Github](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/github.mkd/remark/)
+- [Working with GitHub](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/github.mkd/remark/)
 - [Git branch design](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-branch-design.mkd/remark/)
 - [Archaeology with Git](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-archaeology.mkd/remark/)
 - [Including external projects using Git submodules](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/git-submodules.mkd/remark/)
