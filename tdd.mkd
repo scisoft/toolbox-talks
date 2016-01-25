@@ -15,14 +15,6 @@ Code examples: [OSI](http://opensource.org)-approved [MIT license](http://openso
 
 layout: false
 
-## Test-driven development
-
-- Testing is a central ingredient in programming
-- Write test before you write code
-- Unit tests: test one unit
-
----
-
 ## Tests are no guarantee
 
 <img src="img/unit-testing.jpg" style="width: 500px;"/>
