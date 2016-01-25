@@ -15,6 +15,10 @@ Code examples: [OSI](http://opensource.org)-approved [MIT license](http://openso
 
 layout: false
 
+<img src="img/git/intro/git-fire.jpg" style="width: 400px;"/>
+
+---
+
 ## What we will learn in this lesson
 
 - Why version control
