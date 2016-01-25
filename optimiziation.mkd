@@ -20,6 +20,13 @@ layout: false
 - Code is too slow
 - Memory demand is too high
 
+---
+
+## When do we want to optimize the code?
+
+- Code is too slow
+- Memory demand is too high
+
 ### Things we can do about it
 
 - Buy faster computer
