@@ -112,6 +112,12 @@ MAG-mDKS-20.7.09.tgz              ReSpect-AFDZ-1.3.3_WK_13.8.08.tgz
 
 ## Motivation for version control: collaboration
 
+<img src="img/git/intro/phd_final.gif" style="width: 400px;"/>
+
+---
+
+## Motivation for version control: collaboration
+
 ### Collaborative work
 
 - Programs are often developed by many people in parallel
@@ -123,12 +129,6 @@ MAG-mDKS-20.7.09.tgz              ReSpect-AFDZ-1.3.3_WK_13.8.08.tgz
 - Without the need for manual synchronization
 - Without the risk of undoing the work of others by accident
 - For manuscripts we recommend https://www.overleaf.com
-
----
-
-## Motivation for version control: collaboration
-
-<img src="img/git/intro/phd_final.gif" style="width: 400px;"/>
 
 ---
 
@@ -225,7 +225,7 @@ $ git config --global color.status auto
 
 ```shell
 $ git config --global user.name "Slim Shady"
-$ git config --global user.email slim.shady@google.com
+$ git config --global user.email slim.shady@gmail.com
 ```
 
 - Set the default mode for `git push`
@@ -512,8 +512,6 @@ $ cat .gitignore
 
 ---
 
----
-
 template: inverse
 
 # Using the staging area
@@ -573,36 +571,6 @@ fee1807 feature B
 - We want to have nice commits
 - But we also want to "save often" (checkpointing) - how can we have both?
 - We will now learn to fabricate nice commits using the staging area
-
----
-
-## Checkpointing using the staging area
-
-```shell
-                working    staging     HEAD
-command        directory    area         |   english
-                   |          |          |
-
-git add file(s)    |--------->|          |   stage file
-git commit         |          |--------->|   commit staged file(s)
-git commit file(s) |-------------------->|   commit file(s) directly
-
-git diff           |<-------->|          |   between workdir and staged
-git diff --cached  |          |<-------->|   between staged and last commit
-git diff HEAD      |<------------------->|   between workdir and last commit
-git diff           |<------------------->|   if nothing is staged
-
-git reset          |<---------|          |   unstage
-git reset --soft   |          |<---------|   "uncommit" and stage
-git reset --hard   |<--------------------|   discard
-
-git checkout       |<---------|          |   undo unstaged modifications
-git checkout       |<--------------------|   if nothing is staged
-
-location           .        .git       .git
-```
-
-- Staging area is like a cache
 
 ---
 
