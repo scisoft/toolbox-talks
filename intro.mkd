@@ -46,3 +46,4 @@ science would be impossible. Without better software, science cannot progress."
 - Project work
 - Website
 - Program
+- Slides
