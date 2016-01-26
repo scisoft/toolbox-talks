@@ -52,6 +52,8 @@ layout: false
 
 <img src="img/profile.png" style="width: 200px;"/>
 
+- Benchmark and profile before optimizing
+
 ---
 
 ## Profiling
@@ -182,6 +184,8 @@ template: inverse
 - Use pragmas
 - Tell the compiler where the bottlenecks are
 - Tell the compiler where vectorization is possible
+- Compiler flags
+- Instruction set
 
 ---
 
@@ -190,10 +194,33 @@ template: inverse
 - Consider increase in complexity
 - Pre-factor vs. scaling
 - "Slow" algorithm may catch the worm
+- Easy algorithm first
+- YAGNI
 
 ---
 
 ## Change data structures (optimize data access)
+
+- Latency: https://gist.github.com/jboner/2841832
+- Cache hierarchy
+- Gorilla
+- MPI and scaling (disk access serializing)
+
+---
+
+## Refactoring
+
+- Natural process
+- "In the long run every program becomes rococo - then rubble."
+- http://pu.inf.uni-tuebingen.de/users/klaeren/epigrams.html
+- Needs tests
+
+---
+
+## Recomputing vs. remembering
+
+- Sometimes recompute faster than reading from disk
+- Memoization
 
 ---
 
@@ -207,108 +234,17 @@ template: inverse
 
 ---
 
+## Prototype first with "easy" language
+
+- Matlab
+- Python
+- Julia
+
+---
+
 ## Parallelize
 
----
-
-## Port to another platform (GPU, accelerators)
-
-- Moving target
-- Trend goes towards multi-processor and multi-thread
-- If you rewrite your data structures for GPU/accelerators, the effort
-  is most probably not wasted
-
----
-
-## Performance analysis
-
-- Programming
-
-- Compilation parameters
-    - "Right" compiler
-    - Compiler flags
-    - Instruction set
-    - Optimized libraries
-
-- Runtime parameters
-    - "Right" machine
-    - Memory
-    - I/O
-    - Parallelization
-    - Adapting parameters to system size
-
-- With relatively easy steps analyze whether application runs efficiently
-
----
-
-## Easy language first
-
-- write me
-
----
-
-## Easy algorithm first
-
-- write me
-
----
-
-## YAGNI
-
----
-
-## Maybe port
-
-- Restructure mathematical formulation
-- Innovate at algorithm level
-- Then maybe port
-
----
-
-## Disk and memory access
-
-- Caching
-- Cache hierarchy
-- Distance to data
-- Gorilla
-- Memoization
-- Recompute
-- MPI and scaling (disk access serializing)
-
----
-
-## Do not reinvent the wheel
-
-- libraries
-- libraries are dependencies
-
----
-
-## Elemental functions
-
-- write me
-
----
-
-## Pure functions
-
-- write me
-
----
-
-## Intrinsics
-
-- write me
-
----
-
-## Multiple loops
-
-- allocating/deallocating inside of multiple loops
-
----
-
-## Amdahl
+- Amdahl's law
 
 <img src="img/amdahl.png" style="width: 400px;"/>
 
@@ -316,22 +252,7 @@ template: inverse
 
 ---
 
-## Matlab
-
-- write me
-
----
-
-## Refactoring
-
-- natural process
-- needs tests
-
----
-
-## Conclusions
-
-### Typical problems
+## Typical problems with calculations that do not scale
 
 - Parallel region too small
 - Serialization of parallel tasks
@@ -346,13 +267,45 @@ template: inverse
 
 ---
 
-## Conclusions
+## Port to another platform (GPU, accelerators)
 
-### Advice
+- Moving target
+- Trend goes towards multi-processor and multi-thread
+- If you rewrite your data structures for GPU/accelerators, the effort
+  is most probably not wasted
 
-- Profile first, optimize later
-- Trust but verify
+### Before porting
+
+- Restructure mathematical formulation
+- Innovate at algorithm level
+- Then maybe port
+
+---
+
+## Do not reinvent the wheel
+
+- Use libraries if you can
+- Libraries are dependencies
+
+---
+
+## General
+
+- Use elemental functions
+- Use pure functions/subroutines (Fortran)
+- Use intrinsics
+- Beware of multiple loops
+- Do not allocating/deallocate inside multiple loops
 
 ---
 
 ## Example: profiling performance and memory in Python
+
+- https://gist.github.com/bast/e37ee29036d4f43fee4d
+- https://gist.github.com/bast/1bd41989a975a999d653
+
+---
+
+## Conclusions
+
+- Profile first, optimize later
