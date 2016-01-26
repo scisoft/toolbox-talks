@@ -246,7 +246,7 @@ template: inverse
 
 - Amdahl's law
 
-<img src="img/amdahl.png" style="width: 400px;"/>
+<img src="img/amdahl.png" style="width: 500px;"/>
 
 - Serial and parallel part scale differently w.r.t. system size
 
