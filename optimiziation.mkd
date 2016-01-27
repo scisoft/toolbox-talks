@@ -64,6 +64,7 @@ layout: false
 - Dynamic program analysis (runtime)
 - Statistical sampling or event-based
 - Profiling perturbs the calculation
+- Profiled calculation should be representable
 
 ---
 
@@ -203,8 +204,10 @@ template: inverse
 
 - Latency: https://gist.github.com/jboner/2841832
 - Cache hierarchy
+- Cache line
 - Gorilla
 - MPI and scaling (disk access serializing)
+- Swapping
 
 ---
 
@@ -309,3 +312,4 @@ template: inverse
 ## Conclusions
 
 - Profile first, optimize later
+- When you scale the system, new bottlenecks will appear
