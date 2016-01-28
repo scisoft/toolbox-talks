@@ -68,7 +68,7 @@ layout: false
 - Not bound to the generation of Makefiles
 - Full-fledged testing and packaging framework with CTest and CPack
 - We spend less time writing build system files and more time developing code
-- Personal opinion: much easier than Autotools
+- Personal opinion: easier than Autotools
 
 ---
 
