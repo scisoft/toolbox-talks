@@ -52,7 +52,10 @@ layout: false
 - Excellent support for Fortran, C, C++, and Java, as well as mixed-language projects
 - CMake understands Fortran 90 dependencies very well; no need to program a dependency scanner
 - Excellent support for multi-component and multi-library projects
+- Makes it possible and relatively easy to download, configure, build, install, and link external modules
 - CMake defines portable variables about the system for us
+- Cross-platform system- and library-discovery
+- CTest uses a Makefile (possible to run tests with -jN)
 
 ---
 
