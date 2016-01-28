@@ -14,6 +14,8 @@
 - [Modern code documentation](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/documentation.mkd/remark/)
 - [Profiling and code optimization](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/optimiziation.mkd/remark/)
 - [Test-driven development](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/tdd.mkd/remark/)
+- [CMake basics for busy scientists](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/cmake-basics.mkd/remark/)
+- [Advanced CMake Kung Fu](http://cicero.xyz/v1/github/scisoft/toolbox-talks/master/cmake-kung-fu.mkd/remark/)
 
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 Code examples: [OSI](http://opensource.org)-approved [MIT license](http://opensource.org/licenses/mit-license.html).
